@@ -4,10 +4,9 @@ import {
   Route,
   Link
 } from "react-router-dom";
-import Homepage from './pages/HomePage';
-import AddWordPage from './pages/AddWordPage';
 import RegisterPage from './pages/RegisterPage';
 import LoginPage from './pages/LoginPage';
+import Mainpage from './pages/Mainpage';
 
 const StyledWrapper = styled.div`
   
@@ -17,7 +16,7 @@ function App() {
   return (
     <StyledWrapper>
 
-      <div>
+      {/* <div>
         <div>
           <Link to="/">Home Page</Link>
         </div>
@@ -30,31 +29,27 @@ function App() {
         <div>
           <Link to="/add-word">Add Word Page</Link>
         </div>
-      </div>
+      </div> */}
+      
+        <Switch>
 
-      <Switch>
+          {/*  */}
+          <Route path="/register">
+            <RegisterPage />
+          </Route>
 
-        {/*  */}
-        <Route path="/register">
-          <RegisterPage />
-        </Route>
+          {/*  */}
+          <Route path="/login">
+            <LoginPage />
+          </Route>
+          
+          {/*  */}
+          <Route path="/">
+            <Mainpage />
+          </Route>
 
-        {/*  */}
-        <Route path="/login">
-          <LoginPage />
-        </Route>
-
-
-        {/*  */}
-        <Route path="/add-word">
-          <AddWordPage />
-        </Route>
-        {/*  */}
-        <Route path="/">
-          <Homepage />
-        </Route>
-
-      </Switch>
+        </Switch>
+        
     </StyledWrapper>
   );
 }
