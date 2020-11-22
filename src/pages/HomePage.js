@@ -25,6 +25,8 @@ function HomePage() {
   const { vocabController } = useContext(AppContext)
   const { vocabs, deleteVocab } = vocabController;
 
+  const [ search, setSearch] = useState('');
+
   // const handleDelete = (index) => {
   //   deleteVocab(index);
   // }
@@ -37,8 +39,12 @@ function HomePage() {
     } else if (vocabs.length <= 0) {
       return <p>No data</p>
     } else {
-      return vocabs.map((item, index) => {
-        return (
+      return vocabs.filter((item) => {
+        return item.word.indexOf(search) >= 0
+      }).sort((a, b) => {
+        return b.createdAt.valueOf() - a.createdAt.valueOf()
+      }).map((item, index) => {
+        return(
           <Col key={index} xs={24} sm={12} md={8} lg={6} >
             {/* <WordCard  {...item} onDelete={() => { handleDelete(index) }} /> */}
             <WordCard  {...item} onDelete={() => { deleteVocab(index) }} />
@@ -51,6 +57,7 @@ function HomePage() {
   return (
     <StyledWrapper>
       <h1>My vocabularies</h1>
+      <Input.Search value={search} onChange={e => setSearch(e.target.value)} />
       <Row gutter={[16, 24]}>
         {renderVocabs()}
       </Row>
