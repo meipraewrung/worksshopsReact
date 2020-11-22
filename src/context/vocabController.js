@@ -58,14 +58,14 @@ const VocabController = () => {
         })
     }
 
-    const deleteVocab = (index) => {
+    const deleteVocab = (word) => {
         // const newArr = vocabs.filter((data, id) => {
         //     return id !== index
         // });
         // setVocabs(newArr);
 
         //--- delete in firebase ---
-        return col.doc(vocabs[index].word).delete();
+        return col.doc(word).delete();
     }
 
     return {

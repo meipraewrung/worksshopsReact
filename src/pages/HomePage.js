@@ -51,7 +51,7 @@ function HomePage() {
         return(
           <Col key={index} xs={24} sm={12} md={8} lg={6} >
             {/* <WordCard  {...item} onDelete={() => { handleDelete(index) }} /> */}
-            <WordCard  {...item} onDelete={() => { deleteVocab(index) }} />
+            <WordCard  {...item} onDelete={() => { deleteVocab(item.word) }} />
           </Col>
         )
       })
