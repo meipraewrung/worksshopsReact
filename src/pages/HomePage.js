@@ -16,6 +16,10 @@ const StyledWrapper = styled.div`
   .form-item {
     margin-bottom: 10px;
   }
+
+  .input-search{
+    margin-bottom: 30px;
+  }
 `;
 
 function HomePage() {
@@ -42,7 +46,7 @@ function HomePage() {
       return vocabs.filter((item) => {
         return item.word.indexOf(search) >= 0
       }).sort((a, b) => {
-        return b.createdAt.valueOf() - a.createdAt.valueOf()
+        return b.createdAt.valueOf() - a.createdAt.valueOf() //ใหม่ไปเก่า
       }).map((item, index) => {
         return(
           <Col key={index} xs={24} sm={12} md={8} lg={6} >
@@ -57,7 +61,7 @@ function HomePage() {
   return (
     <StyledWrapper>
       <h1>My vocabularies</h1>
-      <Input.Search value={search} onChange={e => setSearch(e.target.value)} />
+      <Input.Search className="input-search" value={search} onChange={e => setSearch(e.target.value)} placeholder="Search" />
       <Row gutter={[16, 24]}>
         {renderVocabs()}
       </Row>
